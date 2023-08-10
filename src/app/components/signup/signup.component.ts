@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import CheckValidationForm from 'src/app/helpers/checkFormValidataion';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +15,9 @@ export class SignupComponent {
   isText: boolean = false;
   signupFrm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private authService: AuthService,
+              private router: Router) {
     this.signupFrm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -29,7 +33,10 @@ export class SignupComponent {
   }
   onSignup(){
     if (this.signupFrm.valid) {
-      // valid form
+      this.authService.signup(this.signupFrm.value).subscribe((res: any) => {
+        alert('REGISTER SUCCESS!!');
+        this.router.navigate(['login']);
+      })
     } else {
       // unvalid form
       CheckValidationForm.validationForm(this.signupFrm);
