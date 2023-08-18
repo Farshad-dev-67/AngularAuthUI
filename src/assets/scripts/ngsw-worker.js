@@ -3,4 +3,4 @@ self.addEventListener("install", (event) => {
 });
 self.addEventListener("activate", (event) => {
     console.log('activated', event);
-})
+});
