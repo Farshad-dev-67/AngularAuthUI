@@ -33,11 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              "src/initialize-sw.js"
-            ],
-            "serviceWorker": true,
-            "ngswConfigPath": "ngsw-config.json"
+            "scripts": []
           },
           "configurations": {
             "production": {

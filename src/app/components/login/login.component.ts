@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import CheckValidationForm from 'src/app/helpers/checkFormValidataion';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,6 +17,7 @@ export class LoginComponent {
   loginFrm!: FormGroup;
   constructor(private fb: FormBuilder,
     private authService: AuthService,
+    private toast: NgToastService,
     private router: Router) {
     this.loginFrm = this.fb.group({
       username: ['', Validators.required],
@@ -30,7 +32,8 @@ export class LoginComponent {
   onLogin() {
     if (this.loginFrm.valid) {
       this.authService.login(this.loginFrm.value).subscribe((res: any) => {
-        alert('LOGIN SUCCESS!!');
+        this.authService.setToken(res.token);
+        this.toast.success({detail:"SUCCESS",summary:'Your Success Message',duration: 5000, position:'topRight'});
         this.router.navigate(['dashboard']);
       },
         (err: any) => {
