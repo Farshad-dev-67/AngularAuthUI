@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,14 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
-  users: any;
-  constructor(private auth: AuthService){}
-  ngOnInit(): void {
-    this.auth.getUsers().subscribe((res) => {
-      this.users = res;
-    })
-  }
-  getAlbumData(event: any){}
 
+  users: any;
+  public fullName: string = '';
+  constructor(private auth: AuthService, private userStore: UserStoreService) { }
+  ngOnInit(): void {
+    this.userStore.fullName$.subscribe(fullName => {
+      this.fullName = fullName || this.auth.getFullNameFromPayload();
+    })
+
+  }
 }
