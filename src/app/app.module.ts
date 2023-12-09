@@ -12,6 +12,7 @@ import { ServiceWorkerModule, SwRegistrationOptions } from '@angular/service-wor
 import { environment } from 'src/environments/environment';
 import { NgToastModule } from 'ng-angular-popup';
 import { TokenInterceptInterceptor } from './interceptors/token-intercept.interceptor';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TokenInterceptInterceptor } from './interceptors/token-intercept.interc
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    TestDirective
+    TestDirective,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
