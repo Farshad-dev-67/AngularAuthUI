@@ -1,0 +1,50 @@
+.wrapper-toolbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+mat-toolbar {
+  height: unset !important
+}
+
+.toolbar_title {
+  font-family: 'IRANSansWeb';
+}
+
+.example-container {
+  width: 57px;
+  height: 93vh;
+  position: fixed;
+  background: transparent;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-container {
+  margin-right: 15px !important;
+}
+
+.welcome_toolbar {
+  margin-left: 15px !important;
+}
+.menu-items{
+  font-size: 39px;
+  height: auto;
+  margin: 8px !important;
+  width: auto;
+}
+.wrapper-footer{
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0px;
+  background: #C3C3C3;
+}

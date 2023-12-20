@@ -1,11 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import CheckValidationForm from 'src/app/helpers/checkFormValidataion';
 import { AuthService } from 'src/app/services/auth.service';
-import { ResetPasswordService } from 'src/app/services/reset-password.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
+import { SendLinkEmailComponent } from '../send-link-email/send-link-email.component';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,11 @@ export class LoginComponent {
   eyeIcon: string = 'fa-eye-slash';
   isText: boolean = false;
   loginFrm!: FormGroup;
-  resetPasswordEmail!: string;
-  isValidEmail!: boolean;
-  resetEmail!: string;
+
   constructor(private fb: FormBuilder,
     private authService: AuthService,
     private toast: NgToastService,
-    private resetPasswordService: ResetPasswordService,
+    private dialog: MatDialog,
     private userStore: UserStoreService,
     private router: Router) {
     this.loginFrm = this.fb.group({
@@ -44,7 +43,7 @@ export class LoginComponent {
         this.userStore.setFullNameFromStore(payload.unique_name);
         this.userStore.setRoleFromStore(payload.role);
         this.toast.success({ detail: "SUCCESS", summary: 'Your Success Message', duration: 5000, position: 'topRight' });
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['base/dashboard']);
       },
         (err: any) => {
           alert(err?.error?.message);
@@ -55,25 +54,11 @@ export class LoginComponent {
       CheckValidationForm.validationForm(this.loginFrm);
     }
   }
-  emailChecker(event: string): any {
-    const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$/);
-    this.isValidEmail = emailRegex.test(event);
-    if (this.isValidEmail) {
-     this.resetEmail = event; 
-    }
+
+  forgetPassword() {
+    const dialog = this.dialog.open(SendLinkEmailComponent);
   }
-  confirmEmail() {
-    this.resetPasswordService.sendResetPasswordLink(this.resetEmail)
-    .subscribe({
-      next: () => {
-        this.toast.success({ detail: "SUCCESS", summary: 'Reset Success!!', duration: 3000, position: 'topRight' });
-        this.resetEmail = '';
-        const closeBtn = document.getElementById('close_modal');
-        closeBtn?.click();
-      },
-      error: () => {
-        this.toast.error({ detail: "Error", summary: 'Reset Error!!', duration: 3000, position: 'topRight' });
-      }
-    });
+  goToSignup(){
+    this.router.navigate(['base/signup']);
   }
 }

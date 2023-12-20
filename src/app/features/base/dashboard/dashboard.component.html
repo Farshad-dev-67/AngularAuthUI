@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" dir="rtl">
+    <div class="wrapper-toolbar">
+        <div class="drawer-container">
+            <button mat-icon-button (click)="drawer.toggle()" class="example-icon"
+                aria-label="Example icon-button with menu icon">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div class="welcome_toolbar">
+            <h4 class="toolbar_title">سلام, {{fullName}}</h4>
+        </div>
+    </div>
+</mat-toolbar>
+<mat-drawer-container dir="rtl" class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+        <div class="wrapper-content-menu">
+            <mat-icon class="menu-items">home</mat-icon>
+        </div>
+    </mat-drawer>
+</mat-drawer-container>
+<mat-toolbar color="primary" dir="rtl">
+    <div class="wrapper-footer"></div>
+</mat-toolbar>

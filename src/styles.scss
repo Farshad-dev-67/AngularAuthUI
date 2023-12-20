@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('/src/assets/css/common.css');
+*{
+  margin: 0px !important;padding: 0px !important;direction: rtl;
+  font-family: 'IRANSansWeb';
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: unset !important;
+}
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+    font-family: 'IRANSansWeb';
+    src: url(./assets/fonts/iransans-5/woff/IRANSansWeb_Medium.woff) format("opentype");
+}

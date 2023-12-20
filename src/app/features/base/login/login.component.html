@@ -1,10 +1,10 @@
 <div class="outer">
     <div class="container">
         <div class="row">
-            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+            <div class="wrapper-login-panel offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
                 <div class="panel border bg-white">
                     <div class="panel-heading">
-                        <h3 class="pt-3 font-weight-bold">Login</h3>
+                        <h3 class="pt-3 font-weight-bold">ورود</h3>
                     </div>
                     <div class="panel-body p-3">
                         <form [formGroup]="loginFrm">
@@ -12,38 +12,39 @@
                                 <div class="input-field"
                                     [class.error]="loginFrm.controls['username'].dirty && loginFrm.hasError('required', 'username')">
                                     <span class="fa fa-user p-2"></span>
-                                    <input formControlName="username" type="text" placeholder="Username">
+                                    <input formControlName="username" type="text" placeholder="نام کاربری">
                                 </div>
                             </div>
                             <small class="text-danger"
-                                *ngIf="loginFrm.controls['username'].dirty && loginFrm.hasError('required', 'username')">*is
-                                username required</small>
+                                *ngIf="loginFrm.controls['username'].dirty && loginFrm.hasError('required', 'username')">
+                                *وارد کردن نام کاربری الزامی است
+                            </small>
                             <div class="form-group pt-3">
                                 <div class="input-field"
                                     [class.error]="loginFrm.controls['password'].dirty && loginFrm.hasError('required', 'password')">
                                     <span class="fa fa-lock p-2"></span>
-                                    <input formControlName="password" [type]="type" placeholder="Password">
+                                    <input formControlName="password" [type]="type" placeholder="رمز عبور">
                                     <span (click)="hideShow()" class="fa {{eyeIcon}}"></span>
                                 </div>
                             </div>
                             <small class="text-danger"
-                                *ngIf="loginFrm.controls['password'].dirty && loginFrm.hasError('required', 'password')">*is
-                                username required</small>
+                                *ngIf="loginFrm.controls['password'].dirty && loginFrm.hasError('required', 'password')">
+                                *وارد کردن رمز عبور الزامی است
+                            </small>
                             <div class="form-inline fr mt-4">
-                                <a id="forget" class="font-wieght-bold" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Forget Password ?</a>
+                                <a id="forget" class="font-wieght-bold" (click)="forgetPassword()">فراموشی رمز عبور ؟</a>
                             </div>
-                            <button (click)="onLogin()" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                            <button (click)="onLogin()" class="btn btn-primary btn-block mt-4 w-100">ورود</button>
                             <div class="text-center pt-4 text-muted">
-                                Don't have account ?
-                                <a id="forget" routerLink="/signup">Sign Up</a>
+                                در صورت نداشتن حساب کاربری ثبت نام کنید
+                                <a id="forget" [routerLink]="['../signup']">ایجاد حساب کاربری</a>
                             </div>
                         </form>
                     </div>
                     <div class="mx-3 my-2 py-2 bordert">
                         <div class="text-center py-3">
-                            <a style="width: 20px;height: 20px;" href="https://wwww.facebook.com" target="_blank" class="px-2"> <img
-                                    src="../../../assets/image/facebook.png" alt="">
+                            <a style="width: 20px;height: 20px;" href="https://wwww.facebook.com" target="_blank"
+                                class="px-2"> <img src="../../../assets/image/facebook.png" alt="">
                             </a>
                             <a href="https://www.google.com" target="_blank" class="px-2"> <img
                                     src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
@@ -59,28 +60,29 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">ارسال ایمیل برای تغییر رمز عبور</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="form-group pt-3">
                     <div class="input-field">
                         <span class="fa fa-envelope p-2"></span>
-                        <input type="text" placeholder="Email" 
-                        [(ngModel)]="resetPasswordEmail" (ngModelChange)="emailChecker($event)">
+                        <input type="text" placeholder="ایمیل" [(ngModel)]="resetPasswordEmail"
+                            (ngModelChange)="emailChecker($event)">
                     </div>
-                    <span class="text-danger" *ngIf="!isValidEmail && resetPasswordEmail">Email invalid!</span>
-                    <span class="text-success" *ngIf="isValidEmail">Email valid!</span>
+                    <span class="text-danger" *ngIf="!isValidEmail && resetPasswordEmail">ایمیل نامعتبر است!</span>
+                    <span class="text-success" *ngIf="isValidEmail">ایمیل معتبر است!</span>
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="close_modal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" (click)="confirmEmail()" [disabled]="!isValidEmail" class="btn btn-primary">send link</button>
+                <button id="close_modal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                <button type="button" (click)="confirmEmail()" [disabled]="!isValidEmail" class="btn btn-primary">ارسال
+                    لینک</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->

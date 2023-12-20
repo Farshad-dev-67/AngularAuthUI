@@ -1,0 +1,24 @@
+<mat-dialog-content>
+    <div class="form-group pt-3">
+        <!-- <div class="input-field">
+            <span class="fa fa-envelope p-2"></span>
+            <input type="text" placeholder="ایمیل" [(ngModel)]="resetPasswordEmail"
+                (ngModelChange)="emailChecker($event)">
+        </div> -->
+        <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="ایمیل" [(ngModel)]="resetPasswordEmail"
+            (ngModelChange)="emailChecker($event)">
+        </mat-form-field>
+        <!-- <span class="text-danger" *ngIf="!isValidEmail && resetPasswordEmail">ایمیل نامعتبر است!</span>
+        <span class="text-success" *ngIf="isValidEmail">ایمیل معتبر است!</span> -->
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">بستن</button>
+        <button type="button" (click)="confirmEmail()" [disabled]="!isValidEmail" class="btn btn-primary">
+            ارسال لینک
+        </button>
+    </div>
+</mat-dialog-actions>
