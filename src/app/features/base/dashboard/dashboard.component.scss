@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 54px;
+  font-size: 15px;
+  color: #e7e7e7;  
 }
 
 mat-toolbar {
@@ -47,4 +50,13 @@ mat-toolbar {
   position: fixed;
   bottom: 0px;
   background: #C3C3C3;
+}
+:host{
+  ::ng-deep {
+    .mat-mdc-text-field-wrapper{
+      height: 47px !important;
+      margin-top: 23px !important;
+      background-color: white !important;
+    }
+  }
 }

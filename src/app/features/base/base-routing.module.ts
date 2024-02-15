@@ -9,25 +9,25 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'base/login',
-    pathMatch: 'full'
+    redirectTo: 'dashboard',
+    pathMatch: 'prefix'
   },
   {
-    path: 'base/dashboard',
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'base/login',
+    path: 'login',
     component: LoginComponent
   },
   {
-    path: 'base/signup',
+    path: 'signup',
     component: SignupComponent
   },
 
   {
-    path: 'base/reset',
+    path: 'reset',
     component: ResetPasswordComponent
   }
 ];

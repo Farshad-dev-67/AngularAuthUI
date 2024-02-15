@@ -17,8 +17,6 @@
                             </div>
                             <small class="text-danger" *ngIf="signupFrm.controls['firstName'].dirty && 
                             signupFrm.hasError('required', 'firstName')">*is firstName required</small>
-
-
                             <div class="form-group pt-3">
                                 <div class="input-field" [class.error]="signupFrm.controls['lastName'].dirty && 
                                 signupFrm.hasError('required', 'lastName')">
@@ -28,8 +26,6 @@
                             </div>
                             <small class="text-danger" *ngIf="signupFrm.controls['lastName'].dirty && 
                             signupFrm.hasError('required', 'lastName')">*is lastName required</small>
-
-
                             <div class="form-group pt-3">
                                 <div class="input-field" [class.error]="signupFrm.controls['email'].dirty && 
                                 signupFrm.hasError('required', 'email')">
@@ -39,7 +35,6 @@
                             </div>
                             <small class="text-danger" *ngIf="signupFrm.controls['email'].dirty && 
                             signupFrm.hasError('required', 'email')">*is email required</small>
-
                             <div class="form-group pt-3">
                                 <div class="input-field" [class.error]="signupFrm.controls['username'].dirty && 
                                 signupFrm.hasError('required', 'username')">
@@ -49,7 +44,6 @@
                             </div>
                             <small class="text-danger" *ngIf="signupFrm.controls['username'].dirty && 
                             signupFrm.hasError('required', 'username')">*is username required</small>
-
                             <div class="form-group pt-3">
                                 <div class="input-field" [class.error]="signupFrm.controls['password'].dirty && 
                                 signupFrm.hasError('required', 'password')">
@@ -58,11 +52,8 @@
                                     <span (click)="hideShow()" class="fa {{eyeIcon}}"></span>
                                 </div>
                             </div>
-
                             <small class="text-danger" *ngIf="signupFrm.controls['password'].dirty && 
                             signupFrm.hasError('required', 'password')">*is password required</small>
-
-
                             <button (click)="onSignup()" class="btn btn-primary btn-block mt-4 w-100">Sign Up</button>
                             <div class="text-center pt-4 text-muted">
                                 Already have account ?

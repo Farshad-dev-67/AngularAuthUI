@@ -9,6 +9,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { TokenInterceptInterceptor } from './interceptors/token-intercept.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeaturesModule } from './features/features.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent
@@ -30,8 +32,8 @@ import { FeaturesModule } from './features/features.module';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptInterceptor,
       multi: true
-    }
-  ],
-  schemas: [NO_ERRORS_SCHEMA]
+    },
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ]
 })
 export class AppModule { }

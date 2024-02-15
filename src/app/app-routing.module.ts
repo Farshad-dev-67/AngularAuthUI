@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ResetPasswordComponent } from './features/base/reset-password/reset-password.component';
-import { SignupComponent } from './features/base/signup/signup.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo:'features',
+    pathMatch: 'full'
+  },
+  { path: 'features', loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule) }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
